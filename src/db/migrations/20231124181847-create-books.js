@@ -2,52 +2,56 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
 	async up(queryInterface, Sequelize) {
-		await queryInterface.createTable("Customers", {
+		await queryInterface.createTable("Books", {
 			id: {
 				allowNull: false,
 				primaryKey: true,
 				type: Sequelize.UUID,
 				defaultValue: Sequelize.UUIDV4,
 			},
-			name: {
-				type: Sequelize.STRING(50),
+			title: {
 				allowNull: false,
+				type: Sequelize.STRING(100),
 			},
-			password_hash: {
+			category: {
+				allowNull: false,
+				type: Sequelize.UUID,
+				references: {
+					model: "Categories",
+					key: "id",
+				},
+			},
+			ISBN: {
+				allowNull: false,
+				type: Sequelize.STRING(20),
+			},
+			publishYear: {
+				allowNull: false,
+				type: Sequelize.INTEGER,
+			},
+			publishingCompany: {
+				allowNull: false,
+				type: Sequelize.UUID,
+				references: {
+					model: "PublishingCompanies",
+					key: "id",
+				},
+			},
+			price: {
+				allowNull: false,
+				type: Sequelize.FLOAT,
+			},
+			quantity: {
+				allowNull: false,
+				type: Sequelize.INTEGER,
+			},
+			image: {
+				allowNull: false,
 				type: Sequelize.STRING,
-				allowNull: false,
 			},
-			telephone: {
-				type: Sequelize.STRING(14),
+			description: {
 				allowNull: false,
-			},
-			email: {
-				type: Sequelize.STRING(100),
-				allowNull: false,
-			},
-			cpf: {
-				type: Sequelize.STRING(15),
-				allowNull: false,
-			},
-			cep: {
-				type: Sequelize.STRING(100),
-				allowNull: false,
-			},
-			address: {
-				type: Sequelize.STRING,
-				allowNull: false,
-			},
-			city: {
-				type: Sequelize.STRING(100),
-				allowNull: false,
-			},
-			district: {
-				type: Sequelize.STRING(100),
-				allowNull: false,
-			},
-			state: {
-				type: Sequelize.STRING(100),
-				allowNull: false,
+				type: Sequelize.TEXT,
 			},
 			createdAt: {
 				allowNull: false,
@@ -60,6 +64,6 @@ module.exports = {
 		});
 	},
 	async down(queryInterface, Sequelize) {
-		await queryInterface.dropTable("Customers");
+		await queryInterface.dropTable("Books");
 	},
 };

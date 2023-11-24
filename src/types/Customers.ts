@@ -13,3 +13,6 @@ export interface CustomersAttributes {
 	createdAt?: Date;
 	updatedAt?: Date;
 }
+
+export interface CustomerInput extends Omit<CustomersAttributes, "id"> {}
+export interface CustomerOutput extends Required<CustomersAttributes> {}

@@ -1,9 +1,6 @@
 import { DataTypes, Model, Optional } from "sequelize";
-import connection from "../../config/dbConnect";
-import { CustomersAttributes } from "../../types/Customers";
-
-export interface CustomerInput extends Optional<CustomersAttributes, "id"> {}
-export interface CustomerOutput extends Required<CustomersAttributes> {}
+import connection from "config/dbConnect";
+import { CustomerInput, CustomersAttributes } from "types/Customers";
 
 class Customers
 	extends Model<CustomersAttributes, CustomerInput>
@@ -27,7 +24,7 @@ class Customers
 Customers.init(
 	{
 		id: {
-			type: DataTypes.STRING(36),
+			type: DataTypes.UUID,
 			allowNull: false,
 			primaryKey: true,
 		},
