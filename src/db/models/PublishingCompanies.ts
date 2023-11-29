@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import connection from "config/dbConnect";
+import connection from "../../config/dbConnect";
 import {
 	PublishingCompaniesAttributes,
 	PublishingCompanyInput,
