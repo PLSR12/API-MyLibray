@@ -18,7 +18,6 @@ class Books extends Model<IBook, BookInput> implements IBook {
 	public readonly createdAt!: Date;
 	public readonly updatedAt!: Date;
 }
-Books.hasOne(Categories);
 
 Books.init(
 	{
