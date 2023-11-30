@@ -8,7 +8,7 @@ class Customers
 {
 	public id!: string;
 	public name!: string;
-	public password_hash!: string;
+	public password!: string;
 	public telephone!: string;
 	public email!: string;
 	public cpf!: string;
@@ -32,7 +32,7 @@ Customers.init(
 			type: DataTypes.STRING(50),
 			allowNull: false,
 		},
-		password_hash: {
+		password: {
 			type: DataTypes.STRING,
 			allowNull: false,
 		},

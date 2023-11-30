@@ -7,7 +7,10 @@ import { resolve } from "path";
 dotenv.config();
 
 const app = express();
+
+app.use(express.json());
 app.use(routes);
+
 app.use("/category-file", express.static(resolve(__dirname, "..", "uploads")));
 app.use(
 	"/publishing-company-file",

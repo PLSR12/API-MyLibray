@@ -1,7 +1,7 @@
 export interface CustomersAttributes {
 	id: string;
 	name: string;
-	password_hash: string;
+	password: string;
 	telephone: string;
 	email: string;
 	cpf: string;
