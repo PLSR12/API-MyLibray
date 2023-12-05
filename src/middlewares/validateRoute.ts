@@ -3,16 +3,9 @@ import { NextFunction, Request, Response } from "express";
 import Helper from "../helpers/responseData";
 
 export default (schema: any) =>
-	async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+	async (req: Request, res: Response, next: NextFunction) => {
 		try {
-			await schema.validateSync(
-				{
-					body: req.body,
-					query: req.query,
-					params: req.params,
-				},
-				{ abortEarly: false }
-			);
+			await schema.validateSync(req.body, { abortEarly: false });
 			next();
 		} catch (error) {
 			const { name, message, errors } = error as ValidationError;

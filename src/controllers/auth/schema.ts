@@ -4,7 +4,3 @@ export const authSchema = yup.object().shape({
 	email: yup.string().required(),
 	password: yup.string().required(),
 });
-
-export namespace AuthValidation {
-	export const schema = yup.object().shape({ body: authSchema });
-}

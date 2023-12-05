@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-const customersSchema = yup.object().shape({
+export const customersSchema = yup.object().shape({
 	name: yup.string().required(),
 	password: yup.string().required(),
 	telephone: yup.string().required(),
@@ -12,13 +12,3 @@ const customersSchema = yup.object().shape({
 	district: yup.string().required(),
 	state: yup.string().required(),
 });
-
-export namespace CustomersValidation {
-	export const createSchema = yup.object().shape({ body: customersSchema });
-	export const updateSchema = yup.object().shape({
-		body: customersSchema,
-		params: yup.object().shape({
-			id: yup.string().required(),
-		}),
-	});
-}
