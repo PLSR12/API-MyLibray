@@ -1,6 +1,7 @@
 import { Sequelize } from "sequelize";
 
 import dotenv from "dotenv";
+import { associations } from "../db/models/associations";
 
 dotenv.config();
 

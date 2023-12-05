@@ -3,21 +3,21 @@ import dotenv from "dotenv";
 import routes from "./routes";
 import { associations } from "./db/models/associations";
 import { resolve } from "path";
+import errorHandler from "./middlewares/errorHandler";
 
 dotenv.config();
 
 const app = express();
+routes(app);
+app.use(errorHandler);
 
-app.use(express.json());
-app.use(routes);
+associations();
 
 app.use("/category-file", express.static(resolve(__dirname, "..", "uploads")));
 app.use(
 	"/publishing-company-file",
 	express.static(resolve(__dirname, "..", "uploads"))
 );
-
-associations();
 
 app.listen(process.env.APP_PORT, () => {
 	console.log(

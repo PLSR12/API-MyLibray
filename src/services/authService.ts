@@ -1,6 +1,8 @@
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import Customers from "../db/models/Customers";
+import ErrorNotFound from "../errors/errorNotFound";
+import ErrorBase from "../errors/errorBase";
 
 const secret = process.env.SECRET_AUTH as string;
 
@@ -14,13 +16,13 @@ class AuthService {
 		});
 
 		if (!customer) {
-			throw new Error("Customer not found");
+			throw new ErrorNotFound();
 		}
 
 		const passwordEquals = await compare(dto.password, customer.password);
 
 		if (!passwordEquals) {
-			throw new Error("Email or password incorretos");
+			throw new ErrorBase("Email or password incorretos");
 		}
 
 		const accessToken = sign(
