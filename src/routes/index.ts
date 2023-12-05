@@ -4,7 +4,15 @@ import auth from "./authRoutes";
 import customers from "./customersRoutes";
 import categories from "./categoriesRoutes";
 import publishingCompanies from "./publishingCompanies";
+import books from "./booksRoutes";
 
 export default (app: Application) => {
-	app.use(bodyParser.json(), auth, customers, categories, publishingCompanies);
+	app.use(
+		bodyParser.json(),
+		auth,
+		customers,
+		categories,
+		publishingCompanies,
+		books
+	);
 };

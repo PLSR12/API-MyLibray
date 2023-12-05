@@ -42,7 +42,7 @@ PublishingCompanies.init(
 		timestamps: true,
 		sequelize: connection,
 		underscored: false,
-		modelName: "PublishingCompanies",
+		modelName: "publishingCompanies",
 	}
 );
 

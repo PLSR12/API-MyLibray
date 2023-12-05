@@ -40,7 +40,7 @@ Categories.init(
 		timestamps: true,
 		sequelize: connection,
 		underscored: false,
-		modelName: "Categories",
+		modelName: "categories",
 	}
 );
 

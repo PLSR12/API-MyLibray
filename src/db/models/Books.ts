@@ -1,15 +1,14 @@
 import { DataTypes, Model } from "sequelize";
 import connection from "../../config/dbConnect";
-import { IBook, BookInput } from "types/Books";
-import Categories from "./Categories";
+import { IBook, IBookInput } from "types/Books";
 
-class Books extends Model<IBook, BookInput> implements IBook {
+class Books extends Model<IBook, IBookInput> implements IBook {
 	public id!: string;
 	public title!: string;
-	public category!: string;
+	public category_id!: string;
 	public ISBN!: string;
 	public publishYear!: number;
-	public publishingCompany!: string;
+	public publishingCompany_id!: string;
 	public price!: number;
 	public quantity!: number;
 	public image!: string;
@@ -30,7 +29,7 @@ Books.init(
 			allowNull: false,
 			type: DataTypes.STRING(100),
 		},
-		category: {
+		category_id: {
 			type: DataTypes.UUID,
 		},
 		ISBN: {
@@ -41,7 +40,7 @@ Books.init(
 			allowNull: false,
 			type: DataTypes.INTEGER,
 		},
-		publishingCompany: {
+		publishingCompany_id: {
 			allowNull: false,
 			type: DataTypes.UUID,
 		},
@@ -67,7 +66,7 @@ Books.init(
 		timestamps: true,
 		sequelize: connection,
 		underscored: false,
-		modelName: "Books",
+		modelName: "books",
 	}
 );
 
