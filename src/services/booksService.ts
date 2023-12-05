@@ -3,6 +3,7 @@ import Books from "../db/models/Books";
 import ErrorNotFound from "../errors/errorNotFound";
 import Categories from "../db/models/Categories";
 import PublishingCompanies from "../db/models/PublishingCompanies";
+import ErrorBase from "../errors/errorBase";
 
 class BooksService {
 	async getAll() {
@@ -41,12 +42,30 @@ class BooksService {
 	}
 
 	async create(dto: IBook) {
+		const category = await Categories.findByPk(dto.category_id);
+		const publishingCompany = await PublishingCompanies.findByPk(
+			dto.publishingCompany_id
+		);
+
+		if (!publishingCompany || !category) {
+			throw new ErrorBase("Category or PublishingCompany not found");
+		}
+
 		return await Books.create(dto);
 	}
 
 	async update(dto: IBookInput, id: string) {
 		const data = await this.findOne(id);
+		const category = await Categories.findByPk(dto.category_id);
+		const publishingCompany = await PublishingCompanies.findByPk(
+			dto.publishingCompany_id
+		);
+
 		if (data) {
+			if (!publishingCompany || !category) {
+				throw new ErrorBase("Category or PublishingCompany not found");
+			}
+
 			return await Books.update(dto, { where: { id: id } });
 		} else {
 			throw new ErrorNotFound();

@@ -13,6 +13,7 @@ app.use(errorHandler);
 
 associations();
 
+app.use("/book-file", express.static(resolve(__dirname, "..", "uploads")));
 app.use("/category-file", express.static(resolve(__dirname, "..", "uploads")));
 app.use(
 	"/publishing-company-file",

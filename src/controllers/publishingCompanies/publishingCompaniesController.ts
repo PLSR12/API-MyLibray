@@ -3,6 +3,7 @@ import Helper from "../../helpers/responseData";
 import PublishingCompaniesService from "../../services/publishingCompanyService";
 import { v4 } from "uuid";
 
+const { BASEURL } = process.env;
 const publishingCompaniesService = new PublishingCompaniesService();
 
 class PublishingCompaniesController {
@@ -38,7 +39,7 @@ class PublishingCompaniesController {
 		try {
 			const publishingCompanyCreated = await publishingCompaniesService.create({
 				id,
-				image: path,
+				image: `${BASEURL}/publishing-company-file/${path}`,
 				name,
 				description,
 			});
@@ -58,7 +59,7 @@ class PublishingCompaniesController {
 		try {
 			await publishingCompaniesService.update(
 				{
-					image: path,
+					image: `${BASEURL}/publishing-company-file/${path}`,
 					name,
 					description,
 				},

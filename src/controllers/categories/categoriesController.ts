@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import Helper from "../../helpers/responseData";
 import CategoriesService from "../../services/categoriesService";
 import { v4 } from "uuid";
+const { BASEURL } = process.env;
 
 const categoriesService = new CategoriesService();
 
@@ -37,7 +38,7 @@ class CategoriesController {
 		try {
 			const categoryCreated = await categoriesService.create({
 				id,
-				image: path,
+				image: `${BASEURL}/category-file/${path}`,
 				name,
 				description,
 			});
@@ -56,7 +57,7 @@ class CategoriesController {
 		try {
 			await categoriesService.update(
 				{
-					image: path,
+					image: `${BASEURL}/category-file/${path}`,
 					name,
 					description,
 				},
