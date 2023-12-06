@@ -9,6 +9,7 @@ export default (schema: any) =>
 			next();
 		} catch (error) {
 			const { name, message, errors } = error as ValidationError;
+			console.log(errors);
 			res.status(401).send(Helper.ResponseData(401, name, errors, null));
 		}
 	};
