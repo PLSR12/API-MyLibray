@@ -3,6 +3,7 @@ import Categories from "./Categories";
 import Customers from "./Customers";
 import PublishingCompanies from "./PublishingCompanies";
 import Orders from "./Orders";
+import OrderItem from "./OrderItem";
 
 export const associations = () => {
 	Books.belongsTo(Categories, {
@@ -23,6 +24,20 @@ export const associations = () => {
 		foreignKey: "customer_id",
 	});
 	Customers.hasOne(Orders, {
+		foreignKey: "id",
+	});
+
+	OrderItem.belongsTo(Orders, {
+		foreignKey: "order_id",
+	});
+	Orders.hasOne(OrderItem, {
+		foreignKey: "id",
+	});
+
+	OrderItem.belongsTo(Books, {
+		foreignKey: "book_id",
+	});
+	Books.hasOne(OrderItem, {
 		foreignKey: "id",
 	});
 };

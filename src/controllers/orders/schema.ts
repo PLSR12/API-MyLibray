@@ -7,3 +7,7 @@ export const ordersSchema = yup.object().shape({
 		.required()
 		.test((value) => value.length === 36),
 });
+
+export const updtadeOrdersSchema = yup.object().shape({
+	status: yup.number().required(),
+});
