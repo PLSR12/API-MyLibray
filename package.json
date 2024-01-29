@@ -9,6 +9,7 @@
 	},
 	"keywords": [],
 	"author": "PLSR12",
+	"type": "module",
 	"license": "ISC",
 	"devDependencies": {
 		"@types/bcryptjs": "^2.4.6",
