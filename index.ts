@@ -1,9 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
-import routes from "./routes";
-import { associations } from "./db/models/associations";
+import routes from "./src/routes";
+import { associations } from "./src/db/models/associations";
 import { resolve } from "path";
-import errorHandler from "./middlewares/errorHandler";
+import errorHandler from "./src/middlewares/errorHandler";
 
 dotenv.config();
 
