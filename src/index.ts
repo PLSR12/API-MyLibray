@@ -1,9 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
-import routes from "./src/routes";
-import { associations } from "./src/db/models/associations";
+import routes from "./routes";
+import { associations } from "./db/models/associations";
 import { resolve } from "path";
-import errorHandler from "./src/middlewares/errorHandler";
+import errorHandler from "./middlewares/errorHandler";
 
 dotenv.config();
 
@@ -25,6 +25,10 @@ app.listen(process.env.APP_PORT, () => {
 	console.log(
 		`${process.env.APP_NAME} running on port ${process.env.APP_PORT}`
 	);
+});
+
+app.get("/", () => {
+	console.log("to no ar");
 });
 
 export default app;
