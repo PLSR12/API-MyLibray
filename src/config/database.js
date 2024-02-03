@@ -4,7 +4,10 @@ dotenv.config();
 
 module.exports = {
 	development: {
-		url: "postgres://library_xldd_user:l3eOdmglPNYo57Ut52z5dqkVXH2vN8kW@dpg-cms2fu0l5elc73erm4j0-a/library_xldd",
+		username: process.env.DB_USERNAME,
+		password: process.env.DB_PASSWORD,
+		database: process.env.DB_NAME,
+		host: process.env.DB_HOST,
 		dialect: "postgres",
 	},
 	test: {
@@ -15,10 +18,7 @@ module.exports = {
 		dialect: "postgres",
 	},
 	production: {
-		username: process.env.DB_USERNAME,
-		password: process.env.DB_PASSWORD,
-		database: process.env.DB_NAME,
-		host: process.env.DB_HOST,
+		url: process.env.DB_URL_INTERNAL,
 		dialect: "postgres",
 	},
 };
