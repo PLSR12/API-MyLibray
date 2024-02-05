@@ -10,6 +10,7 @@ const upload = multer(multerConfig);
 
 router.get("/books", BooksController.getAll);
 router.get("/books/:id", BooksController.getOne);
+router.get("/books/getBookStock/:bookId", BooksController.getBookStock);
 router.post(
 	"/books",
 	upload.single("file"),

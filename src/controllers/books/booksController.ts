@@ -32,6 +32,21 @@ class BooksController {
 		}
 	}
 
+	static async getBookStock(req: Request, res: Response, next: NextFunction) {
+		const { bookId } = req.params;
+
+		try {
+			const bookInStock = await booksService.getBookStock(bookId);
+			return res.status(200).send(
+				Helper.ResponseData(200, null, null, {
+					stock: bookInStock,
+				})
+			);
+		} catch (error) {
+			next(error);
+		}
+	}
+
 	static async create(req: Request, res: Response, next: NextFunction) {
 		const { filename: path }: any = req.file;
 		const id = v4();

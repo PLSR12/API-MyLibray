@@ -14,6 +14,9 @@ const dbDialect = "postgres";
 const sequelizeConnection = new Sequelize(dbName, dbUsername, dbPassword, {
 	host: dbHost,
 	dialect: dbDialect,
+	dialectOptions: {
+		ssl: true,
+	},
 });
 
 export default sequelizeConnection;

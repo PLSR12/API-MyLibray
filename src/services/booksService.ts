@@ -3,7 +3,9 @@ import Books from "../db/models/Books";
 import ErrorNotFound from "../errors/errorNotFound";
 import Categories from "../db/models/Categories";
 import PublishingCompanies from "../db/models/PublishingCompanies";
+import OrderItemsService from "../services/orderItemsService";
 import ErrorBase from "../errors/errorBase";
+const orderItemsService = new OrderItemsService();
 
 class BooksService {
 	async getAll() {
@@ -39,6 +41,12 @@ class BooksService {
 		} else {
 			throw new ErrorNotFound();
 		}
+	}
+	async getBookStock(bookId: string) {
+		const book = await this.findOne(bookId);
+		const quantityBookSold = await orderItemsService.getBookSales(bookId);
+
+		return book.quantity - quantityBookSold;
 	}
 
 	async create(dto: IBook) {

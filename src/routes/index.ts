@@ -5,6 +5,7 @@ import customers from "./customersRoutes";
 import categories from "./categoriesRoutes";
 import publishingCompanies from "./publishingCompanies";
 import books from "./booksRoutes";
+import orders from "./ordersRoute";
 
 export default (app: Application) => {
 	app.use(
@@ -13,6 +14,7 @@ export default (app: Application) => {
 		customers,
 		categories,
 		publishingCompanies,
-		books
+		books,
+		orders
 	);
 };
